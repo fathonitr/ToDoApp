@@ -14,7 +14,7 @@
     
 }
 .wrapper{
-    width: 80%;
+    width: 60%;
 }
 
 .header{
@@ -64,10 +64,7 @@
     overflow-y: scroll;
     box-shadow: 6px 7.5px rgba(0, 0, 0, 0.315); 
 }
-.list{
-    
-    
-}
+
 .item{
     display:flex;
     height:6vh;

@@ -1,13 +1,52 @@
 const taskList = document.querySelector(".list");
 const inputText = document.querySelector(".input-bar");
-const resetBtn = document.querySelector(".reset-btn");
+const resetBtn = document.querySelector(".reset-btn-img");
 const checkMark = document.querySelector(".check-mark");
 const removeBtn = document.querySelector(".remove-btn");
 const addBtn = document.querySelector(".add-btn");
+const fullDate=document.querySelector(".day-date")
 //ITEMID for storing in list
 let itemId = 0;
 //List for storing the to-do, later stored in localstorage
 let list = [];
+//Date object
+let date=new Date;
+
+export const setDayDate=()=>{
+  const day = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  fullDate.textContent =
+  day[date.getDay()] +
+  ", " +
+  date.getDate() +
+  " " +
+  month[date.getMonth()] +
+  " " +
+  date.getFullYear();
+
+
+}
 
 const userInput = () => {
   inputText.addEventListener("keypress", (e) => {
@@ -56,7 +95,7 @@ const addToLocalStorage = (id, item) => {
   localStorage.setItem(id, JSON.stringify(item));
 };
 
-const loadLocalStorage = () => {
+export const loadLocalStorage = () => {
   let keyLocalStorage = Object.keys(localStorage).sort(); //keys from local storage, sorted
   let lastKey = keyLocalStorage[keyLocalStorage.length - 1];
   if (lastKey < 0 || lastKey == undefined) {
@@ -71,7 +110,7 @@ const loadLocalStorage = () => {
     addItemLocalStorage(temp.name, temp.id);
   }
 };
-loadLocalStorage();
+
 
 //Remove item from
 export const removeItem = () => {
@@ -86,5 +125,17 @@ export const removeItem = () => {
     }
   });
 };
+
+export const resetList=()=>{
+  resetBtn.addEventListener("click", ()=>{
+    if(taskList.hasChildNodes){
+      console.log(taskList.nodeName)
+      //Set whole innerhtml to empty string
+      taskList.innerHTML=""
+      //Emtpy local storage
+      localStorage.clear()
+    }
+  })
+}
 
 export default userInput;
