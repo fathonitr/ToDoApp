@@ -26,31 +26,64 @@ const addItem = (text, id) => {
 </il>`;
 
   taskList.insertAdjacentHTML("beforeend", item);
-  itemId++;
   addToList(text, id);
-  console.log(list);
+  itemId++;
 };
+//Add item, only used after page get reloaded
+const addItemLocalStorage = (text, id) => {
+  const item = `<il class="item">
+    <i class="check-mark" id="${id}"><img src="./image/checkmark.svg" alt="checkmark"></i>
+    <p class="text" id="${id}">${text}</p>
+    <i class="remove-btn" id="${id}"><img src="./image/remove.svg" alt="remove" id="${id}"></i>
+</il>`;
+
+  taskList.insertAdjacentHTML("beforeend", item);
+};
+
 //add to list as object
 const addToList = (text, id) => {
-  list.push({
+  let item = {
     id: id,
     name: text,
-  });
+  };
+
+  list.push(item);
+  addToLocalStorage(itemId, item);
 };
+
+//Store list to local storage
+const addToLocalStorage = (id, item) => {
+  localStorage.setItem(id, JSON.stringify(item));
+};
+
+const loadLocalStorage = () => {
+  let keyLocalStorage = Object.keys(localStorage).sort(); //keys from local storage, sorted
+  let lastKey = keyLocalStorage[keyLocalStorage.length - 1];
+  if (lastKey < 0 || lastKey == undefined) {
+    itemId = 0;
+  } else {
+    itemId = lastKey;
+    itemId++;
+  }
+  for (let x of keyLocalStorage) {
+    //loop through array, get item from localstorage by using key
+    let temp = JSON.parse(localStorage.getItem(x));
+    addItemLocalStorage(temp.name, temp.id);
+  }
+};
+loadLocalStorage();
+
 //Remove item from
 export const removeItem = () => {
   taskList.addEventListener("click", (e) => {
     const element = e.target;
-    //   console.log(element.parentNode.parentNode.parentNode.nodeName)//From tag img up 3 times to UL, then delete tag IL from tag img 2 times up
-    element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode); //simplify?
-
-    // we have an array of objects, we want to remove one object using only the id property
-    // get index of object with id
-    var removeIndex = list.map(function (item) {return item.id;}).indexOf(37);
-    // remove object
-    list.splice(removeIndex, 1);
-    //Magic! https://gist.github.com/scottopolis/6e35cf0d53bae81e6161662e6374da04
-    console.log(list);
+    console.log(element.nodeName); //From <img> up 3 times to <UL>, then delete  <IL> from  <img> 2 times up
+    if (element.nodeName === "IMG") {
+      //So it only delete element, when the icon is clicked
+      element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode); //simplify?
+      localStorage.removeItem(element.id);//remove item from localstorage
+      list = []; //empty list, so it doesn't ruin the localstorage
+    }
   });
 };
 

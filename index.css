@@ -25,7 +25,8 @@
     height:25vh;
     border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
+    box-shadow: 6px 7.5px rgba(0, 0, 0, 0.315);
 }
 .header .overlay{
     width: 100%;
@@ -59,8 +60,9 @@
     height: 45vh;
     border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
     overflow-y: scroll;
+    box-shadow: 6px 7.5px rgba(0, 0, 0, 0.315); 
 }
 .list{
     
@@ -106,6 +108,7 @@
     display: flex;
     border-radius: 16px;
     overflow: hidden;
+    box-shadow: 5.5px 7.5px rgba(0, 0, 0, 0.315);
 }
 .add-btn{
     width: 10%;
