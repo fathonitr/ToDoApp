@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    
+}
+.wrapper{
+    width: 80%;
+}
+
+.header{
+    background: url(./image/header2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height:25vh;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1vh;
+}
+.header .overlay{
+    width: 100%;
+    height: 25vh;
+    background-color: rgb(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+}
+.reset-btn{
+    color:white;
+    height: 5vh;
+    text-align: end;
+    padding-right: 1.5%;
+    padding-top: 1%;
+}
+.reset-btn img{
+    height:3vh;
+    cursor: pointer;
+}
+.day-date{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+    color: rgb(240, 240, 240);
+    height: 5vh;
+    margin-top: auto;
+    padding-left: 1%;
+}
+.content{
+    background-color: #f8f8f8;
+    height: 45vh;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1vh;
+    overflow-y: scroll;
+}
+.list{
+    
+    
+}
+.item{
+    display:flex;
+    height:6vh;
+    border-bottom: 2px solid rgba(83, 82, 82, 0.466);
+    border-radius: 16px;
+}
+.item .check-mark{
+    width:10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.check-mark img{
+    height: 3vh;
+    cursor: pointer;
+}
+.item .text{
+    width:80%;
+    display:flex;
+    align-items: center;
+    padding-left: 1.5%;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.item .remove-btn{
+    width: 10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.remove-btn img{
+    height: 3vh;
+    cursor: pointer;
+}
+.input{
+    background-color: white;
+    height: 5vh;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.add-btn{
+    width: 10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(83, 82, 82, 0.466);
+}
+.add-btn img{
+    height: 3vh;
+    
+    cursor: pointer;
+}
+.input-bar{
+    padding-left: 1%;
+    border-style: none;
+    outline: none;
+    width:90%;
+    font-size: 15px;
+}
