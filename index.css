@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 .container {
   height: 100vh;
   display: flex;
@@ -22,21 +21,6 @@
   /* Safari and Chrome */
   -o-animation: fadein 0.9s;
   /* Opera */
-=======
-.container{
-    
-    height:100vh;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: pink;
-    
-}
-.wrapper{
-    width: 60%;
-    
->>>>>>> cc122035c63a9720a34e4f7dc2a565864b79882a
 }
 
 .header {
